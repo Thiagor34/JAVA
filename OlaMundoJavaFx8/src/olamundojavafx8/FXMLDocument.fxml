@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="olamundojavafx8.FXMLDocumentController">
+    <children>
+        <Button fx:id="btnClick" layoutX="119.0" layoutY="89.0" onAction="#clicouBotao" text="Clique Aqui">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></Button>
+        <Label fx:id="lblMsg" alignment="CENTER" layoutX="126.0" layoutY="146.0" minHeight="16" minWidth="69" text="MSG!" textFill="RED">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font></Label>
+    </children>
+   <effect>
+      <DropShadow />
+   </effect>
+</AnchorPane>
