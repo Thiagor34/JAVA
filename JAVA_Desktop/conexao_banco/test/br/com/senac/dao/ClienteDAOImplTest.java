@@ -1,27 +1,27 @@
 package br.com.senac.dao;
 
-import br.com.senac.entidade.Usuario;
+import br.com.senac.entidade.Cliente;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import util.Gerador;
 
-public class UsuarioDAOImplTest {
-
-    private Usuario usuario;
-    private UsuarioDAO usuarioDAO;
-
-    public UsuarioDAOImplTest() {
-        usuarioDAO = new UsuarioDAOImpl();
+public class ClienteDAOImplTest {
+    
+    private Cliente cliente;
+    private ClienteDAO clienteDAO;
+    
+    public ClienteDAOImplTest() {
+        clienteDAO =  new ClienteDAOImpl();
     }
 
     @Test
     public void testSalvar() throws Exception {
         System.out.println("salvar");
-        usuario = new Usuario(Gerador.gerarNome(), Gerador.gerarLogin(), Gerador.gerarSenha(6));
+        cliente = new Cliente(Gerador.gerarNome(), Gerador.gerarCpf(), Gerador.gerarNumero(6), Double.valueOf(Gerador.gerarNumero(4)));
         
-        usuarioDAO.salvar(usuario);
-        assertNull(usuario.getId());
+        clienteDAO.salvar(cliente);
+        assertNotNull(cliente.getId());
     }
 
     @Test
@@ -48,5 +48,5 @@ public class UsuarioDAOImplTest {
     public void testPesquisarPorNome() throws Exception {
         System.out.println("pesquisarPorNome");
     }
-
+    
 }
