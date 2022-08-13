@@ -17,31 +17,21 @@ public class FabricaConexao {
         }
         return null;
     }
-    
-    public static void fecharConexao(Connection connection, Statement statement, ResultSet resultSet) throws SQLException{
+
+    public static void fecharConexao(Connection connection, Statement statement, ResultSet resultSet) throws SQLException {
         try {
-            if (connection != null) {
-                connection.close();
-            }
-            if (statement != null) {
-                statement.close();
-            }
+
             if (resultSet != null) {
                 resultSet.close();
             }
+
+            connection.close();
+            statement.close();
+
             System.out.println("Conexão fechada");
         } catch (SQLException ex) {
             System.out.println("Erro de driver Sql");
         }
-    }
-
-    public static void fecharConexao(Connection connection, Statement statement) throws SQLException {
-        fecharConexao(connection, statement, null);
-
-    }
-
-    public static void fecharConexao(Connection connection) throws SQLException {
-        fecharConexao(connection, null, null);
     }
 
 }

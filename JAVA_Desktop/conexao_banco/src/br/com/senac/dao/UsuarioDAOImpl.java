@@ -36,7 +36,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         } catch (SQLException e) {
             System.out.println("Erro ao salvar usuário " + e.getMessage());
         } finally {
-            FabricaConexao.fecharConexao(connection, statement);
+            FabricaConexao.fecharConexao(connection, statement, result);
         }
     }
 
@@ -50,7 +50,30 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
     @Override
     public Usuario pesquisarPorId(Integer id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "SELECT * FROM usuario WHERE id = ?";
+        Usuario usuario = null;
+
+        try {
+            connection = FabricaConexao.abrirConexao();
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            result = statement.executeQuery();
+            
+            if(result.next()) {
+                usuario = new Usuario();
+                usuario.setId(id);
+                usuario.setNome(result.getString("nome"));
+                usuario.setLogin(result.getString("login"));
+                usuario.setSenha(result.getString("senha"));
+                usuario.setUltimoAcesso(result.getDate("ultimo_acesso"));
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("Erro ao pesquisar ID cliente " + e.getMessage());
+        } finally {
+            FabricaConexao.fecharConexao(connection, statement, result);
+        }
+        return usuario;
     }
 
     @Override

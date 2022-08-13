@@ -2,7 +2,7 @@ package br.com.senac.entidade;
 
 import java.io.Serializable;
 
-public class Cliente implements Serializable{
+public class Cliente implements Serializable {
 
     private Integer id;
     private String nome;
@@ -59,7 +59,10 @@ public class Cliente implements Serializable{
     public void setSalario(double salario) {
         this.salario = salario;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", salario=" + salario + '}';
+    }
 
 }

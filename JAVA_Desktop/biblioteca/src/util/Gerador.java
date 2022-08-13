@@ -94,18 +94,9 @@ public class Gerador {
 
         return ufLista[(int) (Math.random() * ufLista.length)];
     }
-
-    public static void main(String[] args) {
-        System.out.println(gerarCpf());
-        System.out.println(gerarCNPJ());
-        System.out.println(gerarSenha(10));
-        System.out.println(gerarTelefoneFixo());
-        System.out.println(gerarTelefoneMovel());
-        System.out.println(gerarCEP());
-        System.out.println(gerarNome());
-        System.out.println(gerarLogin());
-        System.out.println(gerarCidade());
-        System.out.println(gerarBairro());
-        System.out.println(gerarUF());
+    
+    public static double gerarSalario() {
+        return Double.parseDouble(gerarNumero(4));
     }
+
 }

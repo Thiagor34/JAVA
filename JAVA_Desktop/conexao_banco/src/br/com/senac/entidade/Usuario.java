@@ -13,13 +13,13 @@ public class Usuario implements Serializable {
 
     public Usuario() {
     }
-    
+
     public Usuario(String nome, String login, String senha) {
         this.nome = nome;
         this.login = login;
         this.senha = senha;
     }
-      
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -59,5 +59,10 @@ public class Usuario implements Serializable {
     public void setUltimoAcesso(Date ultimoAcesso) {
         this.ultimoAcesso = ultimoAcesso;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "id=" + id + ", nome=" + nome + ", login=" + login + ", senha=" + senha + ", ultimoAcesso=" + ultimoAcesso + '}';
+    }
+
 }

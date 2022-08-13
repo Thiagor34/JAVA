@@ -37,7 +37,7 @@ public class ClienteDAOImpl implements ClienteDAO {
         } catch (SQLException e) {
             System.out.println("Erro ao salvar cliente " + e.getMessage());
         } finally {
-            FabricaConexao.fecharConexao(connection, statement);
+            FabricaConexao.fecharConexao(connection, statement, result);
         }
     }
 
@@ -51,7 +51,30 @@ public class ClienteDAOImpl implements ClienteDAO {
 
     @Override
     public Cliente pesquisarPorId(Integer id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "SELECT * FROM cliente WHERE id = ?";
+        Cliente cliente = null;
+
+        try {
+            connection = FabricaConexao.abrirConexao();
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            result = statement.executeQuery();
+            
+            if(result.next()) {
+                cliente = new Cliente();
+                cliente.setId(id);
+                cliente.setNome(result.getString("nome"));
+                cliente.setCpf(result.getString("cpf"));
+                cliente.setRg(result.getString("rg"));
+                cliente.setSalario(result.getDouble("salario"));
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("Erro ao pesquisar ID cliente " + e.getMessage());
+        } finally {
+            FabricaConexao.fecharConexao(connection, statement, result);
+        }
+        return cliente;
     }
 
     @Override
