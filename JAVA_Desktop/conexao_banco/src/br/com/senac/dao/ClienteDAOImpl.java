@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteDAOImpl implements ClienteDAO {
@@ -43,10 +44,41 @@ public class ClienteDAOImpl implements ClienteDAO {
 
     @Override
     public void alterar(Cliente cliente) throws SQLException {
+        String sql = "UPDATE cliente SET nome = ?, cpf = ?, rg = ?, salario = ? WHERE id = ?";
+
+        try {
+            connection = FabricaConexao.abrirConexao();
+            statement = connection.prepareStatement(sql);
+
+            statement.setString(1, cliente.getNome());
+            statement.setString(2, cliente.getCpf());
+            statement.setString(3, cliente.getRg());
+            statement.setDouble(4, cliente.getSalario());
+            statement.setInt(5, cliente.getId());
+
+            statement.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println("Erro ao alterar Cliente " + e.getMessage());
+        } finally {
+            FabricaConexao.fecharConexao(connection, statement, result);
+        }
     }
 
     @Override
     public void excluir(Integer id) throws SQLException {
+        try {
+            connection = FabricaConexao.abrirConexao();
+            statement = connection.prepareStatement("DELETE FROM cliente WHERE id = ?");
+
+            statement.setInt(1, id);
+            statement.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println("Erro ao excluir Cliente " + e.getMessage());
+        } finally {
+            FabricaConexao.fecharConexao(connection, statement, result);
+        }
     }
 
     @Override
@@ -59,8 +91,8 @@ public class ClienteDAOImpl implements ClienteDAO {
             statement = connection.prepareStatement(sql);
             statement.setInt(1, id);
             result = statement.executeQuery();
-            
-            if(result.next()) {
+
+            if (result.next()) {
                 cliente = new Cliente();
                 cliente.setId(id);
                 cliente.setNome(result.getString("nome"));
@@ -68,7 +100,7 @@ public class ClienteDAOImpl implements ClienteDAO {
                 cliente.setRg(result.getString("rg"));
                 cliente.setSalario(result.getDouble("salario"));
             }
-            
+
         } catch (SQLException e) {
             System.out.println("Erro ao pesquisar ID cliente " + e.getMessage());
         } finally {
@@ -79,12 +111,64 @@ public class ClienteDAOImpl implements ClienteDAO {
 
     @Override
     public List<Cliente> pesquisarTudo() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<Cliente> clientes = new ArrayList();
+        String sql = "SELECT * FROM cliente ORDER BY nome ASC";
+        Cliente cliente;
+
+        try {
+            connection = FabricaConexao.abrirConexao();
+            statement = connection.prepareStatement(sql);
+
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                cliente = new Cliente();
+                cliente.setId(result.getInt("id"));
+                cliente.setNome(result.getString("nome"));
+                cliente.setCpf(result.getString("cpf"));
+                cliente.setRg(result.getString("rg"));
+                cliente.setSalario(result.getDouble("salario"));
+
+                clientes.add(cliente);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Erro ao pesquisar todos Clientes " + e.getMessage());
+        } finally {
+            FabricaConexao.fecharConexao(connection, statement, result);
+        }
+        return clientes;
     }
 
-    @Override
     public List<Cliente> pesquisarPorNome(String nome) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<Cliente> clientes = new ArrayList();
+        Cliente cliente;
+        String sql = "SELECT * FROM cliente WHERE nome LIKE ?";
+
+        try {
+            connection = FabricaConexao.abrirConexao();
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, "%" + nome + "%");
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                cliente = new Cliente();
+                cliente.setId(result.getInt("id"));
+                cliente.setNome(result.getString("nome"));
+                cliente.setCpf(result.getString("cpf"));
+                cliente.setRg(result.getString("rg"));
+                cliente.setSalario(result.getDouble("salario"));
+
+                clientes.add(cliente);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao pesquisar ID cliente " + e.getMessage());
+        } finally {
+            FabricaConexao.fecharConexao(connection, statement, result);
+        }
+        return clientes;
+
     }
 
 }

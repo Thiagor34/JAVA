@@ -66,6 +66,11 @@ public class Gerador {
         return sobrenomes.get(0);
     }
 
+    private static String gerarIdade() {
+        String numero = "";
+        return numero += (int) (Math.random() * (65 - 18 + 1) + 18);
+      }
+
     public static String gerarLogin() {
         List<String> nomes = Arrays.asList("Ana", "Claudia", "Daniel", "Fernando", "Luiz",
                 "Maria", "Pedro", "Samanta", "Thiago", "Veronica");
@@ -94,9 +99,8 @@ public class Gerador {
 
         return ufLista[(int) (Math.random() * ufLista.length)];
     }
-    
+
     public static double gerarSalario() {
         return Double.parseDouble(gerarNumero(4));
     }
-
 }

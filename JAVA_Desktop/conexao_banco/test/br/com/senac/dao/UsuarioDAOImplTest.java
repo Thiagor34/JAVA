@@ -26,17 +26,28 @@ public class UsuarioDAOImplTest {
         usuario = new Usuario(Gerador.gerarNome(), Gerador.gerarLogin(), Gerador.gerarSenha(6));
 
         usuarioDAO.salvar(usuario);
-        assertNull(usuario.getId());
+        assertNotNull(usuario.getId());
     }
 
     @Test
-    public void testAlterar() throws SQLException {
+    public void testAlterar() throws SQLException, Exception {
         System.out.println("alterar");
+        buscarUsuarioBD();
+        usuario.setNome(Gerador.gerarNome());
+        usuarioDAO.alterar(usuario);
+        Usuario usuarioAlterado = usuarioDAO.pesquisarPorId(usuario.getId());
+
+        assertEquals(usuario.getNome(), usuarioAlterado.getNome());
     }
 
     @Test
     public void testExcluir() throws Exception {
         System.out.println("excluir");
+        buscarUsuarioBD();
+        usuarioDAO.excluir(usuario.getId());
+        Usuario usuarioExcluido = usuarioDAO.pesquisarPorId(usuario.getId());
+
+        assertNull(usuarioExcluido);
     }
 
     @Test
@@ -45,18 +56,30 @@ public class UsuarioDAOImplTest {
         buscarUsuarioBD();
         Usuario usuarioPesquisado = usuarioDAO.pesquisarPorId(usuario.getId());
         System.out.println(usuario.toString());
-        
+
         assertNotNull(usuarioPesquisado);
     }
 
     @Test
     public void testPesquisarTudo() throws Exception {
         System.out.println("pesquisarTudo");
+        buscarUsuarioBD();
+        List<Usuario> pesquisarTudo = usuarioDAO.pesquisarTudo();
+
+        assertTrue(!pesquisarTudo.isEmpty());
+        assertFalse(pesquisarTudo.isEmpty());
+        assertTrue(pesquisarTudo.size() > 0);
     }
 
     @Test
     public void testPesquisarPorNome() throws Exception {
         System.out.println("pesquisarPorNome");
+        buscarUsuarioBD();
+        List<Usuario> usuarioPorNome = usuarioDAO.pesquisarPorNome(usuario.getNome());
+
+        assertTrue(!usuarioPorNome.isEmpty());
+        assertFalse(usuarioPorNome.isEmpty());
+        assertTrue(usuarioPorNome.size() > 0);
     }
 
     private Usuario buscarUsuarioBD() throws Exception {

@@ -35,11 +35,23 @@ public class ClienteDAOImplTest {
     @Test
     public void testAlterar() throws Exception {
         System.out.println("alterar");
+        buscarClienteBD();
+        cliente.setNome(Gerador.gerarNome());
+        clienteDAO.alterar(cliente);
+        Cliente clienteAlterado = clienteDAO.pesquisarPorId(cliente.getId());
+
+        assertEquals(cliente.getNome(), clienteAlterado.getNome());
     }
 
     @Test
     public void testExcluir() throws Exception {
         System.out.println("excluir");
+        System.out.println("excluir");
+        buscarClienteBD();
+        clienteDAO.excluir(cliente.getId());
+        Cliente clienteExcluido = clienteDAO.pesquisarPorId(cliente.getId());
+
+        assertNull(clienteExcluido);
     }
 
     @Test
@@ -48,18 +60,30 @@ public class ClienteDAOImplTest {
         buscarClienteBD();
         Cliente clientePesquisado = clienteDAO.pesquisarPorId(cliente.getId());
         System.out.println(cliente.toString());
-        
+
         assertNotNull(clientePesquisado);
     }
 
     @Test
     public void testPesquisarTudo() throws Exception {
         System.out.println("pesquisarTudo");
+        buscarClienteBD();
+        List<Cliente> pesquisarTudo = clienteDAO.pesquisarTudo();
+
+        assertTrue(!pesquisarTudo.isEmpty());
+        assertFalse(pesquisarTudo.isEmpty());
+        assertTrue(pesquisarTudo.size() > 0);
     }
 
     @Test
     public void testPesquisarPorNome() throws Exception {
         System.out.println("pesquisarPorNome");
+        buscarClienteBD();
+        List<Cliente> clientePorNome = clienteDAO.pesquisarPorNome(cliente.getNome());
+
+        assertTrue(!clientePorNome.isEmpty());
+        assertFalse(clientePorNome.isEmpty());
+        assertTrue(clientePorNome.size() > 0);
     }
 
     private Cliente buscarClienteBD() throws Exception {
