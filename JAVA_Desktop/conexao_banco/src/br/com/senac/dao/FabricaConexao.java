@@ -11,7 +11,7 @@ public class FabricaConexao {
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection("jdbc:mysql://localhost:3306/"
                     + "wdesktop"
-                    + "?useTimezone=true&serverTimezone=UTC", "root", "dani1812");
+                    + "?useTimezone=true&serverTimezone=UTC", "root", "!!1234!!");
         } catch (ClassNotFoundException ex) {
             System.out.println("Erro no drive do MySql");
         }

@@ -3,10 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Thiago/OneDrive/Documentos/NetBeansProjects/Exercicio/src/br/com/senac/dao/UsuarioDAO.java</file>
-            <file>file:/C:/Users/Thiago/OneDrive/Documentos/NetBeansProjects/Exercicio/test/br/com/senac/dao/UsuarioDAOImplTest.java</file>
-            <file>file:/C:/Users/Thiago/OneDrive/Documentos/NetBeansProjects/Exercicio/src/br/com/senac/dao/ClienteDAOImpl.java</file>
-            <file>file:/C:/Users/Thiago/OneDrive/Documentos/NetBeansProjects/Exercicio/src/br/com/senac/dao/UsuarioDAOImpl.java</file>
+            <file>file:/C:/Users/Thiago/OneDrive/Documentos/NetBeansProjects/Exercicio/src/br/com/senac/dao/FabricaConexao.java</file>
         </group>
     </open-files>
 </project-private>

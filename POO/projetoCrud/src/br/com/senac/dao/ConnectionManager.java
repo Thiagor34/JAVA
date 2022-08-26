@@ -10,7 +10,7 @@ import java.util.Objects;
 public class ConnectionManager {
 
     private static final String USUARIO_BD = "root";
-    private static final String SENHA_BD = "dani1812";
+    private static final String SENHA_BD = "!!1234!!";
     private static final String NOME_BANCO = "senac";
     private static final String STR_TIMEZONE = "?useTimezone=true&serverTimezone=America/Sao_Paulo&zeroDateTimeBehavior=convertToNull";
     private static final String STR_CON = "jdbc:mysql://localhost:3306/" + NOME_BANCO + STR_TIMEZONE;
