@@ -1,0 +1,6 @@
+br\com\senac\entidade\Usuario.class
+br\com\senac\tela\Principal$2.class
+br\com\senac\tela\Principal.class
+br\com\senac\util\GeraTabela.class
+br\com\senac\tela\Principal$1.class
+br\com\senac\dao\HibernateUtil.class
