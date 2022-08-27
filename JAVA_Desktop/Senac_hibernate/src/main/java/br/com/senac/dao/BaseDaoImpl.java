@@ -22,8 +22,4 @@ public abstract class BaseDaoImpl<T, ID> implements BaseDao<T, ID> {
         transaction.commit();
     }
 
-    @Override
-    public T pesquisarPorId(Long id, Session sessao) throws HibernateException {
-        return null;
-    }
 }

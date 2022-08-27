@@ -27,6 +27,16 @@ public class Usuario implements Serializable {
     @Column(name = "ultimo_acesso")
     private Date ultimoAcesso;
 
+    public Usuario() {
+    }
+
+    public Usuario(String nome, String login, String senha) {
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+    }
+    
+   
     public Long getId() {
         return id;
     }

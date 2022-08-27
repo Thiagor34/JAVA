@@ -1,5 +1,10 @@
+br\com\senac\dao\BaseDaoImpl.class
 br\com\senac\entidade\Usuario.class
 br\com\senac\tela\Principal$2.class
+br\com\senac\dao\UsuarioDao.class
+br\com\senac\dao\BaseDao.class
+br\com\senac\util\Gerador.class
+br\com\senac\dao\UsuarioDaoImpl.class
 br\com\senac\tela\Principal.class
 br\com\senac\util\GeraTabela.class
 br\com\senac\tela\Principal$1.class
