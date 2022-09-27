@@ -9,23 +9,27 @@ import javax.persistence.*;
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(nullable = false, length = 100)
     private String nome;
-    
+
     @Column(nullable = false, length = 100, unique = true)
     private String login;
-    
+
     @Column(nullable = false, length = 100)
     private String senha;
-    
+
     @Temporal(TemporalType.DATE)
     @Column(name = "ultimo_acesso")
     private Date ultimoAcesso;
+
+    @ManyToOne
+    @JoinColumn(name = "id_perfil")
+    private Perfil perfil;
 
     public Usuario() {
     }
@@ -35,8 +39,7 @@ public class Usuario implements Serializable {
         this.login = login;
         this.senha = senha;
     }
-    
-   
+
     public Long getId() {
         return id;
     }
@@ -77,6 +80,14 @@ public class Usuario implements Serializable {
         this.ultimoAcesso = ultimoAcesso;
     }
 
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -95,7 +106,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.senac.entidade.Usuario[ id=" + id + " ]";
+        return "br.com.senac.entidade.Usuario[id= " + id + "]";
     }
-    
+
 }

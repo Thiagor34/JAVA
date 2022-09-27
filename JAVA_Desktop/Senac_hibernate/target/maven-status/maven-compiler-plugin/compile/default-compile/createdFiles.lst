@@ -1,8 +1,17 @@
 br\com\senac\dao\BaseDaoImpl.class
+br\com\senac\dao\ProfissaoDaoImpl.class
+br\com\senac\entidade\Profissao.class
+br\com\senac\dao\ProfissaoDao.class
 br\com\senac\entidade\Usuario.class
 br\com\senac\tela\Principal$2.class
+br\com\senac\dao\PerfilDao.class
+br\com\senac\dao\ClienteDao.class
 br\com\senac\dao\UsuarioDao.class
+br\com\senac\dao\ClienteDaoImpl.class
+br\com\senac\entidade\Perfil.class
 br\com\senac\dao\BaseDao.class
+br\com\senac\dao\PerfilDaoImpl.class
+br\com\senac\entidade\Cliente.class
 br\com\senac\util\Gerador.class
 br\com\senac\dao\UsuarioDaoImpl.class
 br\com\senac\tela\Principal.class
