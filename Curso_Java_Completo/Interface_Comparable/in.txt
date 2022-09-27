@@ -1,0 +1,5 @@
+thiago,5000.00
+pedro,6000.00
+jonathan,4500.00
+mauricio,5500.00
+maken,10000.00
