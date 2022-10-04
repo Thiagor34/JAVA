@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="JDBC CONNECTOR">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../../MEUS DOCS/JDBC CONNECTOR" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../../../MEUS DOCS/JDBC CONNECTOR" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../MEUS DOCS/JDBC CONNECTOR" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../MEUS DOCS/JDBC CONNECTOR" recursive="false" type="SOURCES" />
+  </library>
+</component>
